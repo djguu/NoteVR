@@ -12,6 +12,7 @@ public class WhiteboardPen : MonoBehaviour
     private Quaternion lastAngle;
     private RaycastHit touch;
     public Color color;
+    // public GameObject penTip;
 
     // Start is called before the first frame update
     void Start()
@@ -27,36 +28,36 @@ public class WhiteboardPen : MonoBehaviour
         Vector3 tip = transform.Find("Tip").transform.position;
 
         Vector3 forward = (transform.right * -1) * .05f;
+        Debug.DrawRay(tip, forward, Color.red); 
 
-        // if (Physics.Raycast(tip, transform.right * -1, out touch, tipHeight)){
-        if (Physics.Raycast(tip, transform.right * -1, out touch, 0.05f)){
-            Debug.DrawRay(tip, forward, Color.green); 
+
+        if (Physics.Raycast(tip, this.transform.right * -1, out this.touch, 0.05f)){
+            // Debug.DrawRay(tip, transform.forward, Color.red); 
             
-            if(!(touch.collider.tag == "Whiteboard"))
+            if(!(this.touch.collider.tag == "Whiteboard"))
                 return;
 
             // print(touch.distance);
-            // Debug.Log(touch.collider.tag);
+            Debug.Log(this.touch.collider.tag);
 
-            this.whiteboard = touch.collider.GetComponent <Whiteboard> ();
-            // Debug.Log ("touching!");
+            this.whiteboard = this.touch.collider.GetComponent <Whiteboard> ();
 
             this.whiteboard.SetColor(this.color);
-            this.whiteboard.SetTouchPosition(touch.textureCoord.x, touch.textureCoord.y);
+            this.whiteboard.SetTouchPosition(this.touch.textureCoord.x, this.touch.textureCoord.y);
             this.whiteboard.ToggleTouch(true);
 
-            if(!lastTouch){
-                lastTouch = true;
-                lastAngle = transform.rotation;
+            if(!this.lastTouch){
+                this.lastTouch = true;
+                this.lastAngle = this.transform.rotation;
             }
         }
         else{
-            this.whiteboard.ToggleTouch(false);
-            lastTouch = false;
+            // this.whiteboard.ToggleTouch(false);
+            this.lastTouch = false;
         }
 
-        if(lastTouch){
-            transform.rotation = lastAngle;
-        }
+        // if(lastTouch){
+        //     transform.rotation = lastAngle;
+        // }
     }
 }

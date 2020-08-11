@@ -321,8 +321,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4377177536257892348}
   - component: {fileID: 5084970032110218058}
-  - component: {fileID: 9109804910575992796}
   - component: {fileID: 6935865275785648805}
+  - component: {fileID: 9109804910575992796}
   m_Layer: 0
   m_Name: Green Marker
   m_TagString: Untagged
@@ -360,6 +360,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.24063158, y: 0.03917384, z: 0.041199684}
   m_Center: {x: 0.39393222, y: 0.66999185, z: -0.5083637}
+--- !u!65 &6935865275785648805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732872482652354661}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016216993, y: 0.017838478, z: 0.0109272}
+  m_Center: {x: 0.26590443, y: 0.66853845, z: -0.5076312}
 --- !u!114 &9109804910575992796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,19 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteboard: {fileID: 0}
   color: {r: 0, g: 1, b: 0, a: 0}
---- !u!65 &6935865275785648805
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2732872482652354661}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.016216993, y: 0.017838478, z: 0.0109272}
-  m_Center: {x: 0.26590443, y: 0.66853845, z: -0.5076312}
+  penTip: {fileID: 2057638274824874744}
 --- !u!1 &3262974488672662293
 GameObject:
   m_ObjectHideFlags: 0

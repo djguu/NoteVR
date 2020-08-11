@@ -31,14 +31,18 @@ public class Whiteboard : MonoBehaviour
         int y = (int) (posY * textureSize - (penSize / 2));
 
         if(touchingLast){
-            texture.SetPixels(x, y, penSize, penSize, color);
+            this.texture.SetPixels(x, y, penSize, penSize, color);
 
-            for(float t = 0-01f; t < 1.00f; t += 0.01f){
-                int lerpX = (int) Mathf.Lerp(lastX, (float)x, t);
-                int lerpY = (int) Mathf.Lerp(lastY, (float)y, t);
-                texture.SetPixels(lerpX, lerpY, penSize, penSize, color);
+            float xDistance = Mathf.Abs(lastX-(float)x);
+            float yDistance = Mathf.Abs(lastY-(float)y);
+
+            if(xDistance < (penSize * 5) && yDistance < (penSize * 5) ){
+                for(float t = 0.01f; t < 1.00f; t += 0.01f){
+                    int lerpX = (int) Mathf.Lerp(lastX, (float)x, t);
+                    int lerpY = (int) Mathf.Lerp(lastY, (float)y, t);
+                    this.texture.SetPixels(lerpX, lerpY, penSize, penSize, this.color);
+                }
             }
-
             texture.Apply();
         }
 

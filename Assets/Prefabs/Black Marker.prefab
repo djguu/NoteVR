@@ -1182,6 +1182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteboard: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  penTip: {fileID: 975703990798975226}
 --- !u!1 &5825778312896485381
 GameObject:
   m_ObjectHideFlags: 0
