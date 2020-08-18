@@ -12,7 +12,6 @@ public class LocalPlayerControl : NetworkBehaviour
     public Transform rightHand;
     public Camera leftEye;
     public Camera rightEye;
-    public
     Vector3 pos;
 
     // Start is called before the first frame update
