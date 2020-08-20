@@ -9391,17 +9391,17 @@ PrefabInstance:
     - target: {fileID: 7371010959381950500, guid: fb1e10d234036e24596f4b7f1b5994ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.81137
+      value: -4.19
       objectReference: {fileID: 0}
     - target: {fileID: 7371010959381950500, guid: fb1e10d234036e24596f4b7f1b5994ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.46901
+      value: -0.452
       objectReference: {fileID: 0}
     - target: {fileID: 7371010959381950500, guid: fb1e10d234036e24596f4b7f1b5994ac,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.299318
+      value: 5.05
       objectReference: {fileID: 0}
     - target: {fileID: 7371010959381950500, guid: fb1e10d234036e24596f4b7f1b5994ac,
         type: 3}
@@ -9782,7 +9782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &929974362
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9796,7 +9796,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 615241550}
+  m_Mesh: {fileID: 0}
 --- !u!33 &929974363
 MeshFilter:
   m_ObjectHideFlags: 10
