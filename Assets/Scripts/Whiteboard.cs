@@ -15,10 +15,13 @@ public class Whiteboard : MonoBehaviour
     private float posX, posY;
     private float lastX, lastY;
 
+    private string objectType;
+
     // Start is called before the first frame update
     void Start()
     {
         Renderer renderer = GetComponent<Renderer>();
+        // renderer.material.color = Color.white;
         this.texture = new Texture2D(textureSize, textureSize);
         renderer.material.mainTexture = this.texture;
     }
@@ -26,6 +29,13 @@ public class Whiteboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // print(color);
+        if(this.objectType == "eraser"){
+                this.penSize = 3;
+            }
+            else{
+                this.penSize = 1;
+            }
         // Debug.Log(posX + " " + posY);
         int x = (int) (posX * textureSize - (penSize / 2));
         int y = (int) (posY * textureSize - (penSize / 2));
@@ -63,5 +73,9 @@ public class Whiteboard : MonoBehaviour
 
     public void SetColor(Color color){
         this.color = Enumerable.Repeat<Color>(color, penSize * penSize).ToArray<Color>();
+    }
+
+    public void SetObjectType(string type){
+        this.objectType = type;
     }
 }
