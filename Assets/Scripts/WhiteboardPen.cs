@@ -28,11 +28,18 @@ public class WhiteboardPen : MonoBehaviour
 
         Vector3 tip = transform.Find("Tip").transform.position;
 
-        Vector3 forward = (transform.right * -1) * .05f;
+        // Vector3 forward = (transform.right * -1) * .05f;
+        Vector3 forward = (transform.forward) * .03f;
+        // Vector3 backward = (-transform.forward) * .05f;
+        // Vector3 right = (transform.right) * .05f;
+        // Vector3 left = (-transform.right) * .05f;
         Debug.DrawRay(tip, forward, Color.red); 
+        // Debug.DrawRay(tip, backward, Color.blue);
+        // Debug.DrawRay(tip, right, Color.green);
+        // Debug.DrawRay(tip, left, Color.yellow); 
 
 
-        if (Physics.Raycast(tip, this.transform.right * -1, out this.touch, 0.05f)){
+        if (Physics.Raycast(tip, this.transform.forward, out this.touch, 0.05f)){
             // Debug.DrawRay(tip, transform.forward, Color.red); 
             
             if(!(this.touch.collider.tag == "Whiteboard"))

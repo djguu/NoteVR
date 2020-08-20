@@ -13,6 +13,7 @@ public class LocalPlayerControl : NetworkBehaviour
     public Camera leftEye;
     public Camera rightEye;
     Vector3 pos;
+    public float speed = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -37,32 +38,37 @@ public class LocalPlayerControl : NetworkBehaviour
             }
             
             //posicao das maos
-            leftHand.localRotation = InputTracking.GetLocalRotation(Node.LeftHand);
-            rightHand.localRotation = InputTracking.GetLocalRotation(Node.RightHand);
-            leftHand.localPosition = InputTracking.GetLocalPosition(Node.LeftHand);
-            rightHand.localPosition = InputTracking.GetLocalPosition(Node.RightHand);
+            leftHand.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
+            rightHand.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+
+            leftHand.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
+            rightHand.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
+            // leftHand.localRotation = InputTracking.GetLocalRotation(Node.LeftHand);
+            // rightHand.localRotation = InputTracking.GetLocalRotation(Node.RightHand);
+            // leftHand.localPosition = InputTracking.GetLocalPosition(Node.LeftHand);
+            // rightHand.localPosition = InputTracking.GetLocalPosition(Node.RightHand);
 
             //posiçao e rotaçao do jogador
-            Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
-
+            Vector2 primaryAxis = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick);
+            // print(primaryAxis.y);
             if(primaryAxis.y > 0f){
-                pos += (primaryAxis.y * transform.forward * Time.deltaTime);
+                pos += (primaryAxis.y * -transform.forward * Time.deltaTime * speed);
             }
             if(primaryAxis.y < 0f){
-                pos += (Mathf.Abs(primaryAxis.y) * -transform.right * Time.deltaTime);
+                pos += (Mathf.Abs(primaryAxis.y) * transform.forward * Time.deltaTime * speed);
             }
             if(primaryAxis.x > 0f){
-                pos += (primaryAxis.y * transform.forward * Time.deltaTime);
+                pos += (primaryAxis.x * -transform.right * Time.deltaTime * speed);
             }
             if(primaryAxis.x < 0f){
-                pos += (Mathf.Abs(primaryAxis.y) * -transform.right * Time.deltaTime);
+                pos += (Mathf.Abs(primaryAxis.x) * transform.right * Time.deltaTime * speed);
             }
 
             transform.position = pos;
 
             Vector3 euler = transform.rotation.eulerAngles;
-            Vector2 secondaryAxys = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
-            euler.y += secondaryAxys.y;
+            Vector2 secondaryAxys = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
+            euler.y += secondaryAxys.x * speed;
             transform.rotation = Quaternion.Euler(euler);
 
             transform.localRotation = Quaternion.Euler(euler);
