@@ -9388,6 +9388,16 @@ PrefabInstance:
       propertyPath: m_Tangents.Array.data[109].z
       value: -2.067285e-20
       objectReference: {fileID: 0}
+    - target: {fileID: 4420657836588690110, guid: fb1e10d234036e24596f4b7f1b5994ac,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420657836588690110, guid: fb1e10d234036e24596f4b7f1b5994ac,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.037
+      objectReference: {fileID: 0}
     - target: {fileID: 7371010959381950500, guid: fb1e10d234036e24596f4b7f1b5994ac,
         type: 3}
       propertyPath: m_LocalPosition.x
