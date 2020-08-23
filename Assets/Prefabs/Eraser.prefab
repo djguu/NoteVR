@@ -606,6 +606,8 @@ GameObject:
   - component: {fileID: 4377177536257892348}
   - component: {fileID: 1751067251322981446}
   - component: {fileID: 2972569911461548708}
+  - component: {fileID: 6297402752235384835}
+  - component: {fileID: 5145103209382966368}
   m_Layer: 0
   m_Name: Eraser
   m_TagString: Untagged
@@ -657,3 +659,37 @@ MonoBehaviour:
   whiteboard: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   eraserInteractable: {fileID: 0}
+--- !u!114 &6297402752235384835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732872482652354661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &5145103209382966368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732872482652354661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
