@@ -26,7 +26,8 @@ public class LocalPlayerControl : NetworkBehaviour
 
     // Update is called once per frame
     void Update()
-    {   //Resolve que a camera nao salte  para o novo jogador
+    {   
+        //Resolve que a camera nao salte  para o novo jogador
         if(!isLocalPlayer){
             Destroy(ovrCameraRig);
         }
@@ -57,9 +58,13 @@ public class LocalPlayerControl : NetworkBehaviour
             //posicao das maos
             leftHand.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
             rightHand.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+            // leftHand.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
+            // rightHand.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
 
             leftHand.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
             rightHand.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
+            // leftHand.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
+            // rightHand.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
             // leftHand.localRotation = InputTracking.GetLocalRotation(Node.LeftHand);
             // rightHand.localRotation = InputTracking.GetLocalRotation(Node.RightHand);
             // leftHand.localPosition = InputTracking.GetLocalPosition(Node.LeftHand);
@@ -78,7 +83,7 @@ public class LocalPlayerControl : NetworkBehaviour
                 pos += (primaryAxis.x * transform.right * Time.deltaTime * speed);
             }
             if(primaryAxis.x < 0f){
-                pos += (Mathf.Abs(primaryAxis.x) * -transform.right * Time.deltaTime * speed);
+                pos += (Mathf.Abs(primaryAxis.x) * transform.right * Time.deltaTime * speed);
             }
 
             transform.position = pos;
