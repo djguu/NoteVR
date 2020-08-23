@@ -40,7 +40,7 @@ public class LocalPlayerControl : NetworkBehaviour
                 rightEye.tag = "MainCamera";
                 rightEye.enabled = true;
             }
-            print(ovrCameraRig.centerEyeAnchor.position);
+            // print(ovrCameraRig.centerEyeAnchor.position);
 
             Vector3 euler = transform.rotation.eulerAngles;
             
