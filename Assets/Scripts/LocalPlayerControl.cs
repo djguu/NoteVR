@@ -7,7 +7,7 @@ using Node = UnityEngine.XR.XRNode;
 
 public class LocalPlayerControl : NetworkBehaviour
 {
-    public GameObject ovrCameraRig;
+    public OVRCameraRig ovrCameraRig;
     public Camera leftEye;
     public Camera rightEye;
     public Vector3 pos;
@@ -22,13 +22,11 @@ public class LocalPlayerControl : NetworkBehaviour
     {
         // anim = GetComponentInChildren<Animator>();
         pos = transform.position;
-        print(leftHand.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {   
-        print(leftHand.transform.position);
         //Resolve que a camera nao salte  para o novo jogador
         if(!isLocalPlayer){
             Destroy(ovrCameraRig);
@@ -42,6 +40,7 @@ public class LocalPlayerControl : NetworkBehaviour
                 rightEye.tag = "MainCamera";
                 rightEye.enabled = true;
             }
+            print(ovrCameraRig.centerEyeAnchor.position);
 
             Vector3 euler = transform.rotation.eulerAngles;
             
