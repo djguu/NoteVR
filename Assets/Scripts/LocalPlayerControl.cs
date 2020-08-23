@@ -7,7 +7,7 @@ using Node = UnityEngine.XR.XRNode;
 
 public class LocalPlayerControl : NetworkBehaviour
 {
-    public OVRCameraRig ovrCameraRig;
+    public GameObject ovrCameraRig;
     public Camera leftEye;
     public Camera rightEye;
     public Vector3 pos;

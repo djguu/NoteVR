@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
+using Mirror;
 
 
-public class WhiteboardPen : MonoBehaviour 
+public class WhiteboardPen : NetworkBehaviour 
 {
 
     public Whiteboard whiteboard;

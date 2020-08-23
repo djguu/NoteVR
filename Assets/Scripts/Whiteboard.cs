@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 using System.Linq;      //VERIFICAR O QUE É ISTO
 
-public class Whiteboard : MonoBehaviour
+public class Whiteboard : NetworkBehaviour
 {
 
     private int textureSize = 2048;
