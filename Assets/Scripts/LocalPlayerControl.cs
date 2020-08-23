@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using Mirror;
 using InputTracking = UnityEngine.XR.InputTracking;
 using Node = UnityEngine.XR.XRNode;
 
@@ -22,11 +22,13 @@ public class LocalPlayerControl : NetworkBehaviour
     {
         // anim = GetComponentInChildren<Animator>();
         pos = transform.position;
+        print(leftHand.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {   
+        print(leftHand.transform.position);
         //Resolve que a camera nao salte  para o novo jogador
         if(!isLocalPlayer){
             Destroy(ovrCameraRig);
@@ -83,7 +85,7 @@ public class LocalPlayerControl : NetworkBehaviour
                 pos += (primaryAxis.x * transform.right * Time.deltaTime * speed);
             }
             if(primaryAxis.x < 0f){
-                pos += (Mathf.Abs(primaryAxis.x) * transform.right * Time.deltaTime * speed);
+                pos += (Mathf.Abs(primaryAxis.x) * -transform.right * Time.deltaTime * speed);
             }
 
             transform.position = pos;
