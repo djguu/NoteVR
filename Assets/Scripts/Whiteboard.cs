@@ -27,10 +27,21 @@ public class Whiteboard : NetworkBehaviour
         renderer.material.mainTexture = this.texture;
     }
 
-    // Update is called once per frame
+    [Client]
     void Update()
     {
         // print(color);
+        RpcDraw();
+        CmdDraw();  //Just draws it locally
+    }
+
+    [Command]
+    void CmdDraw(){
+        RpcDraw();
+    }
+
+    [ClientRpc]
+    void RpcDraw(){
         if(this.objectType == "eraser"){
                 this.penSize = 3;
             }

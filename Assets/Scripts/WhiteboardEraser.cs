@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
+using Mirror;
 
 
-public class WhiteboardEraser : MonoBehaviour 
+public class WhiteboardEraser : NetworkBehaviour 
 {
 
     public Whiteboard whiteboard;
