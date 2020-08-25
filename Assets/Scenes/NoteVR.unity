@@ -10243,7 +10243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &929974362
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10257,7 +10257,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 615241550}
+  m_Mesh: {fileID: 0}
 --- !u!33 &929974363
 MeshFilter:
   m_ObjectHideFlags: 10
