@@ -24,6 +24,17 @@ public class Whiteboard : NetworkBehaviour
         Renderer renderer = GetComponent<Renderer>();
         // renderer.material.color = Color.white;
         this.texture = new Texture2D(textureSize, textureSize);
+
+        // Color[] textColor = new Color[] {};
+        // textColor =  this.texture.GetPixels();
+
+        // for(var i = 0; i < textColor.Length; ++i)
+        //  {
+        //      textColor[i] = Color.white;
+        //  }
+        // this.texture.SetPixels(textColor);
+        // this.texture.Apply();
+
         renderer.material.mainTexture = this.texture;
     }
 

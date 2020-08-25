@@ -1107,6 +1107,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9109804910575992796, guid: 370746423c1f7a4439f820902b96807a,
+        type: 3}
+      propertyPath: markerInteractable
+      value: 
+      objectReference: {fileID: 2339240309828789502}
     - target: {fileID: 9209637942229946887, guid: 370746423c1f7a4439f820902b96807a,
         type: 3}
       propertyPath: m_Mesh

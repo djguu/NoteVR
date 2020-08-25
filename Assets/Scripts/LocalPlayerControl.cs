@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-using InputTracking = UnityEngine.XR.InputTracking;
-using Node = UnityEngine.XR.XRNode;
 
 public class LocalPlayerControl : NetworkBehaviour
 {

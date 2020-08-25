@@ -14,6 +14,7 @@ public class WhiteboardPen : NetworkBehaviour
     private RaycastHit touch;
     public Color color;
     // public GameObject penTip;
+    public GameObject markerInteractable;
 
     // Start is called before the first frame update
     void Start()
@@ -57,16 +58,16 @@ public class WhiteboardPen : NetworkBehaviour
 
             if(!this.lastTouch){
                 this.lastTouch = true;
-                this.lastAngle = this.transform.rotation;
+                this.lastAngle = this.markerInteractable.transform.rotation;
             }
         }
         else{
-            // this.whiteboard.ToggleTouch(false);
+            this.whiteboard.ToggleTouch(false);
             this.lastTouch = false;
         }
 
-        // if(lastTouch){
-        //     transform.rotation = lastAngle;
-        // }
+        if(lastTouch){
+            this.markerInteractable.transform.rotation = lastAngle;
+        }
     }
 }

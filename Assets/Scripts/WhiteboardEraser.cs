@@ -23,7 +23,7 @@ public class WhiteboardEraser : NetworkBehaviour
     {
         this.whiteboard = GameObject.Find("Whiteboard").GetComponent<Whiteboard> ();
         this.whiteboardMaterial = GameObject.Find("Whiteboard").GetComponent<Renderer>().material;
-        this.color = whiteboardMaterial.color;
+        this.color = Color.white;
         this.eraserInteractableRigidbody = this.eraserInteractable.GetComponent<Rigidbody>();
         // print(this.color);
         // this.whiteboard.SetColor(this.color);
@@ -37,9 +37,8 @@ public class WhiteboardEraser : NetworkBehaviour
 
         Vector3 tip = transform.Find("Bottom").transform.position;
 
-        Vector3 down = (transform.up * -1) * .03f;
+        Vector3 down = -transform.up * .05f;
         Debug.DrawRay(tip, down, Color.red); 
-
 
         if (Physics.Raycast(tip, this.transform.up * -1, out this.touch, 0.03f)){
             // Debug.DrawRay(tip, transform.forward, Color.red); 
@@ -58,20 +57,21 @@ public class WhiteboardEraser : NetworkBehaviour
 
             if(!this.lastTouch){
                 this.lastTouch = true;
-                this.lastAngle = this.transform.rotation;
+                this.lastAngle = this.eraserInteractable.transform.rotation;
             }
         }
         else{
-            // this.whiteboard.ToggleTouch(false);
+            this.whiteboard.ToggleTouch(false);
             this.lastTouch = false;
         }
 
         if(lastTouch){
             // transform.rotation = lastAngle;
-            this.eraserInteractableRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
+            this.eraserInteractable.transform.rotation = lastAngle;
+            // this.eraserInteractableRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
         }
-        else{
-            this.eraserInteractableRigidbody.constraints =  RigidbodyConstraints.None;
-        }
+        // else{
+        //     this.eraserInteractableRigidbody.constraints =  RigidbodyConstraints.None;
+        // }
     }
 }
