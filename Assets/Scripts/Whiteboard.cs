@@ -25,15 +25,15 @@ public class Whiteboard : NetworkBehaviour
         // renderer.material.color = Color.white;
         this.texture = new Texture2D(textureSize, textureSize);
 
-        // Color[] textColor = new Color[] {};
-        // textColor =  this.texture.GetPixels();
+        Color[] textColor = new Color[] {};
+        textColor =  this.texture.GetPixels();
 
-        // for(var i = 0; i < textColor.Length; ++i)
-        //  {
-        //      textColor[i] = Color.white;
-        //  }
-        // this.texture.SetPixels(textColor);
-        // this.texture.Apply();
+        for(var i = 0; i < textColor.Length; ++i)
+         {
+             textColor[i] = Color.white;
+         }
+        this.texture.SetPixels(textColor);
+        this.texture.Apply();
 
         renderer.material.mainTexture = this.texture;
     }
@@ -53,8 +53,8 @@ public class Whiteboard : NetworkBehaviour
 
     [ClientRpc]
     void RpcDraw(){
-        if(this.objectType == "eraser"){
-                this.penSize = 3;
+        if(this.objectType == "Eraser"){
+                this.penSize = 5;
             }
             else{
                 this.penSize = 1;
