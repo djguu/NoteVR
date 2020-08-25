@@ -40,12 +40,13 @@ public class WhiteboardEraser : NetworkBehaviour
         Vector3 down = -transform.up * .05f;
         Debug.DrawRay(tip, down, Color.red); 
 
-        if (Physics.Raycast(tip, this.transform.up * -1, out this.touch, 0.03f)){
+        if (Physics.Raycast(tip, this.transform.up * -1, out this.touch, 0.04f)){
             // Debug.DrawRay(tip, transform.forward, Color.red); 
             
             if(!(this.touch.collider.tag == "Whiteboard"))
                 return;
 
+            this.whiteboard.SetObjectType("Eraser");
             // print(touch.distance);
             Debug.Log(this.touch.collider.tag);
 

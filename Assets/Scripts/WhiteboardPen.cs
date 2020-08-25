@@ -47,6 +47,8 @@ public class WhiteboardPen : NetworkBehaviour
             if(!(this.touch.collider.tag == "Whiteboard"))
                 return;
 
+            this.whiteboard.SetObjectType("Marker");
+
             // print(touch.distance);
             Debug.Log(this.touch.collider.tag);
 
