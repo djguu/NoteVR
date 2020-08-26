@@ -18,22 +18,23 @@ public class Whiteboard : NetworkBehaviour
 
     private string objectType;
 
+    private Color[] textColor = new Color[] {};
+
     // Start is called before the first frame update
     void Start()
     {
         Renderer renderer = GetComponent<Renderer>();
         // renderer.material.color = Color.white;
         this.texture = new Texture2D(textureSize, textureSize);
-
-        Color[] textColor = new Color[] {};
+        
         textColor =  this.texture.GetPixels();
 
         for(var i = 0; i < textColor.Length; ++i)
          {
              textColor[i] = Color.white;
          }
-        this.texture.SetPixels(textColor);
-        this.texture.Apply();
+
+        ResetWhiteboard();
 
         renderer.material.mainTexture = this.texture;
     }
@@ -100,5 +101,10 @@ public class Whiteboard : NetworkBehaviour
 
     public void SetObjectType(string type){
         this.objectType = type;
+    }
+
+    public void ResetWhiteboard(){
+        this.texture.SetPixels(textColor);
+        this.texture.Apply();
     }
 }
