@@ -7,8 +7,10 @@ using System.Linq;      //VERIFICAR O QUE É ISTO
 public class Whiteboard : NetworkBehaviour
 {
 
-    private int textureSize = 2048;
+    private int textureSize = 3072;
     private int penSize = 1;
+
+    public int lerpMultiplier = 15;
     private Texture2D texture;
     private Color[] color;
 
@@ -56,10 +58,10 @@ public class Whiteboard : NetworkBehaviour
     void RpcDraw(){
         if(this.objectType == "Eraser"){
                 this.penSize = 5;
-            }
-            else{
-                this.penSize = 1;
-            }
+        }
+        else{
+            this.penSize = 1;
+        }
         // Debug.Log(posX + " " + posY);
         int x = (int) (posX * textureSize - (penSize / 2));
         int y = (int) (posY * textureSize - (penSize / 2));
@@ -70,7 +72,8 @@ public class Whiteboard : NetworkBehaviour
             float xDistance = Mathf.Abs(lastX-(float)x);
             float yDistance = Mathf.Abs(lastY-(float)y);
 
-            if(xDistance < (penSize * 5) && yDistance < (penSize * 5) ){
+            if(xDistance < (penSize * lerpMultiplier) && yDistance < (penSize * lerpMultiplier) ){
+                print("lerp");
                 for(float t = 0.01f; t < 1.00f; t += 0.01f){
                     int lerpX = (int) Mathf.Lerp(lastX, (float)x, t);
                     int lerpY = (int) Mathf.Lerp(lastY, (float)y, t);

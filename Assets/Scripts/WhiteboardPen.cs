@@ -30,29 +30,16 @@ public class WhiteboardPen : NetworkBehaviour
 
         Vector3 tip = transform.Find("Tip").transform.position;
 
-        // Vector3 forward = (transform.right * -1) * .05f;
-        Vector3 forward = (transform.forward) * .03f;
-        // Vector3 backward = (-transform.forward) * .05f;
-        // Vector3 right = (transform.right) * .05f;
-        // Vector3 left = (-transform.right) * .05f;
-        Debug.DrawRay(tip, forward, Color.red); 
-        // Debug.DrawRay(tip, backward, Color.blue);
-        // Debug.DrawRay(tip, right, Color.green);
-        // Debug.DrawRay(tip, left, Color.yellow); 
+        Vector3 forward = transform.forward;
 
+        // Debug.DrawRay(tip, forward * .03f, Color.red); 
 
-        if (Physics.Raycast(tip, this.transform.forward, out this.touch, 0.05f)){
-            // Debug.DrawRay(tip, transform.forward, Color.red); 
+        if (Physics.Raycast(tip, forward, out this.touch, 0.05f)){
             
             if(!(this.touch.collider.tag == "Whiteboard"))
                 return;
 
             this.whiteboard.SetObjectType("Marker");
-
-            // print(touch.distance);
-            Debug.Log(this.touch.collider.tag);
-
-            this.whiteboard = this.touch.collider.GetComponent <Whiteboard> ();
 
             this.whiteboard.SetColor(this.color);
             this.whiteboard.SetTouchPosition(this.touch.textureCoord.x, this.touch.textureCoord.y);
