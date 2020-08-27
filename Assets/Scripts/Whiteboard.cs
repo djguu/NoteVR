@@ -4,14 +4,18 @@ using UnityEngine;
 using Mirror;
 using System.Linq;      //VERIFICAR O QUE É ISTO
 
+[RequireComponent(typeof(MeshRenderer))]
 public class Whiteboard : NetworkBehaviour
 {
 
-    private int textureSize = 3072;
+    private int textureSize = 2048;
     private int penSize = 1;
 
-    public int lerpMultiplier = 15;
+    public int lerpMultiplier = 6;
     private Texture2D texture;
+    private Texture2D newTexture;
+    private int textureWidth;
+    private int textureHeight;
     private Color[] color;
 
     private bool touching, touchingLast;
@@ -20,25 +24,48 @@ public class Whiteboard : NetworkBehaviour
 
     private string objectType;
 
-    private Color[] textColor = new Color[] {};
+    // private Color[] textColor = new Color[] {};
+    private Color32[] textColor = new Color32[] {};
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        Renderer renderer = GetComponent<Renderer>();
-        // renderer.material.color = Color.white;
-        this.texture = new Texture2D(textureSize, textureSize);
+        // Renderer renderer = GetComponent<MeshRenderer>();
+
+        // this.texture = new Texture2D(textureSize, textureSize);
         
-        textColor =  this.texture.GetPixels();
+        // textColor =  this.texture.GetPixels();
+
+        // for(var i = 0; i < textColor.Length; ++i)
+        //  {
+        //      textColor[i] = Color.white;
+        //  }
+
+        // ResetWhiteboard();
+
+        // renderer.material.mainTexture = this.texture;
+
+        this.texture = GetComponent<MeshRenderer>().material.mainTexture as Texture2D;
+
+        this.textureWidth = this.texture.width;
+        this.textureHeight = this.texture.height;
+
+        this.textColor = new Color32[textureWidth * textureHeight];
+        
+        this.newTexture = new Texture2D(texture.width, texture.height);
+        // newTexture = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false, false);
+        // newTexture = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, true, true);
+        // newTexture = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false, true);
+
 
         for(var i = 0; i < textColor.Length; ++i)
-         {
-             textColor[i] = Color.white;
-         }
+        {
+            textColor[i] = Color.white;
+        }
 
         ResetWhiteboard();
-
-        renderer.material.mainTexture = this.texture;
+        
+        GetComponent<MeshRenderer>().material.mainTexture = this.newTexture;
     }
 
     [Client]
@@ -67,7 +94,7 @@ public class Whiteboard : NetworkBehaviour
         int y = (int) (posY * textureSize - (penSize / 2));
 
         if(touchingLast){
-            this.texture.SetPixels(x, y, penSize, penSize, color);
+            this.newTexture.SetPixels(x, y, penSize, penSize, color);
 
             float xDistance = Mathf.Abs(lastX-(float)x);
             float yDistance = Mathf.Abs(lastY-(float)y);
@@ -77,7 +104,7 @@ public class Whiteboard : NetworkBehaviour
                 for(float t = 0.01f; t < 1.00f; t += 0.01f){
                     int lerpX = (int) Mathf.Lerp(lastX, (float)x, t);
                     int lerpY = (int) Mathf.Lerp(lastY, (float)y, t);
-                    this.texture.SetPixels(lerpX, lerpY, penSize, penSize, this.color);
+                    this.newTexture.SetPixels(lerpX, lerpY, penSize, penSize, this.color);
                 }
             }
             texture.Apply();
@@ -107,7 +134,8 @@ public class Whiteboard : NetworkBehaviour
     }
 
     public void ResetWhiteboard(){
-        this.texture.SetPixels(textColor);
-        this.texture.Apply();
+        // this.texture.SetPixels(textColor);
+        this.newTexture.SetPixels32(textColor);
+        this.newTexture.Apply();
     }
 }
