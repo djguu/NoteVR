@@ -45,18 +45,6 @@ public class Whiteboard : NetworkBehaviour
     [Client]
     void Update()
     {
-        // print(color);
-        RpcDraw();
-        CmdDraw();  //Just draws it locally
-    }
-
-    [Command]
-    void CmdDraw(){
-        RpcDraw();
-    }
-
-    [ClientRpc]
-    void RpcDraw(){
         if(this.objectType == "Eraser"){
             this.penSize = 5;
         }
@@ -68,25 +56,45 @@ public class Whiteboard : NetworkBehaviour
         int y = (int) (posY * textureSize - (penSize / 2));
 
         if(touchingLast){
-            // this.texture.SetPixels32(x, y, this.penSize, this.penSize, this.color);
-
-            float xDistance = Mathf.Abs(lastX-(float)x);
-            float yDistance = Mathf.Abs(lastY-(float)y);
-
-            if(xDistance < (this.penSize * 20) && yDistance < (this.penSize * 20) ){
-                for(float t = 0.01f; t < 1.00f; t += 0.01f){
-                    int lerpX = (int) Mathf.Lerp(lastX, (float)x, t);
-                    int lerpY = (int) Mathf.Lerp(lastY, (float)y, t);
-                    this.texture.SetPixels32(lerpX, lerpY, this.penSize, this.penSize, this.color);
-                }
+            CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
+            if(isLocalPlayer){
+                RpcDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
             }
-            texture.Apply();
+            RpcDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
         }
 
         this.lastX = (float)x;
         this.lastY = (float)y;
 
         this.touchingLast = this.touching;
+        // print(color);
+        // RpcDraw();
+       
+    }
+
+    [Command]
+    void CmdDraw(int x, int y, int penSize, Color32[] color, float lastX, float lastY){
+        
+        RpcDraw(x, y, penSize, color, lastX, lastY);
+    }
+
+    [ClientRpc]
+    void RpcDraw(int x, int y, int penSize, Color32[] color, float lastX, float lastY){
+        print("HEREEEE");
+        this.texture.SetPixels32(x, y, penSize, penSize, color);
+
+        float xDistance = Mathf.Abs(lastX-(float)x);
+        float yDistance = Mathf.Abs(lastY-(float)y);
+
+        if(xDistance < (penSize * 20) && yDistance < (penSize * 20) ){
+            for(float t = 0.01f; t < 1.00f; t += 0.01f){
+                int lerpX = (int) Mathf.Lerp(lastX, (float)x, t);
+                int lerpY = (int) Mathf.Lerp(lastY, (float)y, t);
+                this.texture.SetPixels32(lerpX, lerpY, penSize, penSize, color);
+            }
+        }
+        // this.texture = texture;
+        this.texture.Apply();
     }
 
     public void ToggleTouch(bool touching){

@@ -32,9 +32,10 @@ public class WhiteboardPen : NetworkBehaviour
 
         Vector3 forward = transform.forward;
 
-        // Debug.DrawRay(tip, forward * .03f, Color.red); 
+        Debug.DrawRay(tip, forward * .03f, Color.red); 
 
-        if (Physics.Raycast(tip, forward, out this.touch, 0.02f)){
+        if (Physics.Raycast(tip, forward, out this.touch, 0.03f)){
+            print(this.touch.collider.tag);
             
             if(!(this.touch.collider.tag == "Whiteboard"))
                 return;
@@ -44,6 +45,7 @@ public class WhiteboardPen : NetworkBehaviour
             this.whiteboard.SetColor(this.color);
             this.whiteboard.SetTouchPosition(this.touch.textureCoord.x, this.touch.textureCoord.y);
             this.whiteboard.ToggleTouch(true);
+            print("TRUEEE");
 
             if(!this.lastTouch){
                 this.lastTouch = true;
