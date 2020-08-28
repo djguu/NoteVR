@@ -4,19 +4,15 @@ using UnityEngine;
 using Mirror;
 using System.Linq;      //VERIFICAR O QUE É ISTO
 
-[RequireComponent(typeof(MeshRenderer))]
 public class Whiteboard : NetworkBehaviour
 {
 
-    private int textureSize = 2048;
+    private int textureSize = 4096;
     private int penSize = 1;
 
     public int lerpMultiplier = 6;
     private Texture2D texture;
-    private Texture2D newTexture;
-    private int textureWidth;
-    private int textureHeight;
-    private Color[] color;
+    private Color32[] color;
 
     private bool touching, touchingLast;
     private float posX, posY;
@@ -24,48 +20,26 @@ public class Whiteboard : NetworkBehaviour
 
     private string objectType;
 
-    // private Color[] textColor = new Color[] {};
     private Color32[] textColor = new Color32[] {};
 
     // Start is called before the first frame update
     void Awake()
     {
-        // Renderer renderer = GetComponent<MeshRenderer>();
+        Renderer renderer = GetComponent<Renderer>();
 
-        // this.texture = new Texture2D(textureSize, textureSize);
+        this.texture = new Texture2D(textureSize, textureSize, TextureFormat.RGBA32, false, true);
         
         // textColor =  this.texture.GetPixels();
-
-        // for(var i = 0; i < textColor.Length; ++i)
-        //  {
-        //      textColor[i] = Color.white;
-        //  }
-
-        // ResetWhiteboard();
-
-        // renderer.material.mainTexture = this.texture;
-
-        this.texture = GetComponent<MeshRenderer>().material.mainTexture as Texture2D;
-
-        this.textureWidth = this.texture.width;
-        this.textureHeight = this.texture.height;
-
-        this.textColor = new Color32[textureWidth * textureHeight];
-        
-        this.newTexture = new Texture2D(texture.width, texture.height);
-        // newTexture = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false, false);
-        // newTexture = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, true, true);
-        // newTexture = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false, true);
-
+        this.textColor = new Color32[textureSize * textureSize];
 
         for(var i = 0; i < textColor.Length; ++i)
         {
-            textColor[i] = Color.white;
+            this.textColor[i] = Color.white;
         }
 
         ResetWhiteboard();
-        
-        GetComponent<MeshRenderer>().material.mainTexture = this.newTexture;
+
+        renderer.material.mainTexture = this.texture;
     }
 
     [Client]
@@ -84,7 +58,7 @@ public class Whiteboard : NetworkBehaviour
     [ClientRpc]
     void RpcDraw(){
         if(this.objectType == "Eraser"){
-                this.penSize = 5;
+            this.penSize = 5;
         }
         else{
             this.penSize = 1;
@@ -94,17 +68,16 @@ public class Whiteboard : NetworkBehaviour
         int y = (int) (posY * textureSize - (penSize / 2));
 
         if(touchingLast){
-            this.newTexture.SetPixels(x, y, penSize, penSize, color);
+            // this.texture.SetPixels32(x, y, this.penSize, this.penSize, this.color);
 
             float xDistance = Mathf.Abs(lastX-(float)x);
             float yDistance = Mathf.Abs(lastY-(float)y);
 
-            if(xDistance < (penSize * lerpMultiplier) && yDistance < (penSize * lerpMultiplier) ){
-                print("lerp");
+            if(xDistance < (this.penSize * 20) && yDistance < (this.penSize * 20) ){
                 for(float t = 0.01f; t < 1.00f; t += 0.01f){
                     int lerpX = (int) Mathf.Lerp(lastX, (float)x, t);
                     int lerpY = (int) Mathf.Lerp(lastY, (float)y, t);
-                    this.newTexture.SetPixels(lerpX, lerpY, penSize, penSize, this.color);
+                    this.texture.SetPixels32(lerpX, lerpY, this.penSize, this.penSize, this.color);
                 }
             }
             texture.Apply();
@@ -126,7 +99,7 @@ public class Whiteboard : NetworkBehaviour
     }
 
     public void SetColor(Color color){
-        this.color = Enumerable.Repeat<Color>(color, penSize * penSize).ToArray<Color>();
+        this.color = Enumerable.Repeat<Color32>(color, penSize * penSize).ToArray<Color32>();
     }
 
     public void SetObjectType(string type){
@@ -134,8 +107,7 @@ public class Whiteboard : NetworkBehaviour
     }
 
     public void ResetWhiteboard(){
-        // this.texture.SetPixels(textColor);
-        this.newTexture.SetPixels32(textColor);
-        this.newTexture.Apply();
+        this.texture.SetPixels32(this.textColor);
+        this.texture.Apply();
     }
 }

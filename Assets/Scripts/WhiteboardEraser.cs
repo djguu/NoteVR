@@ -36,7 +36,7 @@ public class WhiteboardEraser : NetworkBehaviour
 
         // Debug.DrawRay(tip, dow  * .05f, Color.red); 
 
-        if (Physics.Raycast(tip, down, out this.touch, 0.04f)){
+        if (Physics.Raycast(tip, down, out this.touch, 0.02f)){
             
             if(!(this.touch.collider.tag == "Whiteboard"))
                 return;

@@ -34,7 +34,7 @@ public class WhiteboardPen : NetworkBehaviour
 
         // Debug.DrawRay(tip, forward * .03f, Color.red); 
 
-        if (Physics.Raycast(tip, forward, out this.touch, 0.05f)){
+        if (Physics.Raycast(tip, forward, out this.touch, 0.02f)){
             
             if(!(this.touch.collider.tag == "Whiteboard"))
                 return;
