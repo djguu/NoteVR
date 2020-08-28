@@ -323,7 +323,6 @@ GameObject:
   - component: {fileID: 6935865275785648805}
   - component: {fileID: 7215458321071474759}
   - component: {fileID: 9109804910575992796}
-  - component: {fileID: 4721055474497408509}
   m_Layer: 0
   m_Name: Marker_Mesh
   m_TagString: Untagged
@@ -359,8 +358,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.011604142, y: 0.015719485, z: 0.011705697}
-  m_Center: {x: 0.00037998008, y: -0.0068135625, z: 0.1402506}
+  m_Size: {x: 0.011604142, y: 0.014874637, z: 0.011705697}
+  m_Center: {x: 0.00037998008, y: -0.006, z: 0.1402506}
 --- !u!136 &7215458321071474759
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -371,10 +370,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.02236651
-  m_Height: 0.25540096
+  m_Radius: 0.01931308
+  m_Height: 0.25148496
   m_Direction: 2
-  m_Center: {x: -0.0009586308, y: -0.0088689905, z: 0.004926324}
+  m_Center: {x: -0.00022813492, y: -0.0088689905, z: 0.010159895}
 --- !u!114 &9109804910575992796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,19 +391,6 @@ MonoBehaviour:
   whiteboard: {fileID: 0}
   color: {r: 1, g: 1, b: 1, a: 0}
   markerInteractable: {fileID: 0}
---- !u!65 &4721055474497408509
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2732872482652354661}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.030248974, y: 0.030710042, z: 0.026620358}
-  m_Center: {x: 0.00012448803, y: -0.0062924027, z: 0.12106356}
 --- !u!1 &3262974488672662293
 GameObject:
   m_ObjectHideFlags: 0
