@@ -61,13 +61,14 @@ public class Whiteboard : NetworkBehaviour
             // if(isLocalPlayer){
             //     RpcDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
             // }
-            print(isServer);
-            if(isServer){
-                RpcDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
-            }
-            else{
-                CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
-            }
+            // print(isServer);
+            // if(isServer){
+            //     RpcDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
+            // }
+            // else{
+            //     CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
+            // }
+            RpcDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
         }
 
         this.lastX = (float)x;
