@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 using Mirror;
 
 
-public class WhiteboardPen : NetworkBehaviour 
+public class Marker : NetworkBehaviour 
 {
 
     public Whiteboard whiteboard;
@@ -13,8 +13,9 @@ public class WhiteboardPen : NetworkBehaviour
     private Quaternion lastAngle;
     private RaycastHit touch;
     public Color color;
-    // public GameObject penTip;
+    public GameObject penTip;
     public GameObject markerInteractable;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -26,16 +27,16 @@ public class WhiteboardPen : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        float tipHeight = transform.Find("Tip").transform.localScale.y;
+        float tipHeight = penTip.transform.localScale.y;
 
-        Vector3 tip = transform.Find("Tip").transform.position;
+        Vector3 tip = penTip.transform.position;
 
-        Vector3 forward = transform.forward;
+        Vector3 forward = penTip.transform.up;
 
         Debug.DrawRay(tip, forward * .03f, Color.red); 
 
         if (Physics.Raycast(tip, forward, out this.touch, 0.03f)){
-            // print(this.touch.collider.tag);
+            print(this.touch.collider.tag);
             
             if(!(this.touch.collider.tag == "Whiteboard"))
                 return;

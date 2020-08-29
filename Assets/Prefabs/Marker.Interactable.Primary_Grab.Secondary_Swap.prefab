@@ -132,7 +132,7 @@ MonoBehaviour:
   Grabbed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1511881100153262654}
+      - m_Target: {fileID: 5820114862116566676}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -146,7 +146,7 @@ MonoBehaviour:
   Ungrabbed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1511881100153262654}
+      - m_Target: {fileID: 5820114862116566676}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2339240309828789502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83392ae5c1b731446909f252fd494ae4, type: 3}
   m_Name: 
@@ -1030,6 +1030,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5881750943294490887}
     m_Modifications:
+    - target: {fileID: -5691403952451056794, guid: 370746423c1f7a4439f820902b96807a,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 119222636966203700, guid: 370746423c1f7a4439f820902b96807a,
         type: 3}
       propertyPath: m_Mesh
@@ -1049,6 +1054,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202688807806655350, guid: 370746423c1f7a4439f820902b96807a,
+        type: 3}
+      propertyPath: markerInteractable
+      value: 
+      objectReference: {fileID: 2339240309828789502}
+    - target: {fileID: 4202688807806655350, guid: 370746423c1f7a4439f820902b96807a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4377177536257892348, guid: 370746423c1f7a4439f820902b96807a,
         type: 3}
@@ -1148,14 +1163,14 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7680819437007449570}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1511881100153262654 stripped
+--- !u!114 &5820114862116566676 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9109804910575992796, guid: 370746423c1f7a4439f820902b96807a,
+  m_CorrespondingSourceObject: {fileID: 4202688807806655350, guid: 370746423c1f7a4439f820902b96807a,
     type: 3}
   m_PrefabInstance: {fileID: 7680819437007449570}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c49df0994f2debf45a55c7133e056ed1, type: 3}
   m_Name: 

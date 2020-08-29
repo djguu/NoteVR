@@ -322,7 +322,8 @@ GameObject:
   - component: {fileID: 4377177536257892348}
   - component: {fileID: 6935865275785648805}
   - component: {fileID: 7215458321071474759}
-  - component: {fileID: 9109804910575992796}
+  - component: {fileID: -5691403952451056794}
+  - component: {fileID: 4202688807806655350}
   m_Layer: 0
   m_Name: Marker_Mesh
   m_TagString: Untagged
@@ -374,7 +375,23 @@ CapsuleCollider:
   m_Height: 0.25148496
   m_Direction: 2
   m_Center: {x: -0.00022813492, y: -0.0088689905, z: 0.010159895}
---- !u!114 &9109804910575992796
+--- !u!114 &-5691403952451056794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732872482652354661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
+--- !u!114 &4202688807806655350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -389,8 +406,9 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   whiteboard: {fileID: 0}
-  color: {r: 1, g: 1, b: 1, a: 0}
-  markerInteractable: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  markerInteractable: {fileID: 2339240309828789502, guid: ffa1238184be785468a1c1f8e047776b,
+    type: 3}
 --- !u!1 &3262974488672662293
 GameObject:
   m_ObjectHideFlags: 0

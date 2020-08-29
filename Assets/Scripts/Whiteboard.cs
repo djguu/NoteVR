@@ -56,11 +56,18 @@ public class Whiteboard : NetworkBehaviour
         int y = (int) (posY * textureSize - (penSize / 2));
 
         if(touchingLast){
-            CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
-            if(isLocalPlayer){
+            // print("DRAW2222");
+            // CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
+            // if(isLocalPlayer){
+            //     RpcDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
+            // }
+            print(isServer);
+            if(isServer){
                 RpcDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
             }
-            RpcDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
+            else{
+                CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
+            }
         }
 
         this.lastX = (float)x;
@@ -74,13 +81,13 @@ public class Whiteboard : NetworkBehaviour
 
     [Command]
     void CmdDraw(int x, int y, int penSize, Color32[] color, float lastX, float lastY){
-        
+        // print("DRAW");
         RpcDraw(x, y, penSize, color, lastX, lastY);
     }
 
     [ClientRpc]
     void RpcDraw(int x, int y, int penSize, Color32[] color, float lastX, float lastY){
-        print("HEREEEE");
+        // print("HEREEEE");
         this.texture.SetPixels32(x, y, penSize, penSize, color);
 
         float xDistance = Mathf.Abs(lastX-(float)x);
