@@ -45,9 +45,7 @@ public class RefreshButton : NetworkBehaviour
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
             ReverseDirection = true;
-            print("HERE");
             CmdResetWhiteboard();
-            // this.whiteboard.ResetWhiteboard();
         }
     }
 
@@ -58,7 +56,6 @@ public class RefreshButton : NetworkBehaviour
 
     [ClientRpc]
     void RpcResetWhiteboard(){
-        print("HERE");
         this.whiteboard.ResetWhiteboard();
     }
 }
