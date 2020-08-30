@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 1444451115566075680}
   - component: {fileID: 6309716271823371901}
   - component: {fileID: 5464728010601505495}
-  - component: {fileID: 208041945703174979}
+  - component: {fileID: 5771111037710874791}
   m_Layer: 0
   m_Name: Marker.Interactable.Primary_Grab.Secondary_Swap
   m_TagString: Untagged
@@ -132,7 +132,7 @@ MonoBehaviour:
   Grabbed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5820114862116566676}
+      - m_Target: {fileID: 5771111037710874791}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -146,7 +146,7 @@ MonoBehaviour:
   Ungrabbed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5820114862116566676}
+      - m_Target: {fileID: 5771111037710874791}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -181,7 +181,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -286,28 +286,23 @@ MonoBehaviour:
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
   target: {fileID: 6208523602082804254}
---- !u!114 &208041945703174979
+--- !u!114 &5771111037710874791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2339240309828789502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83392ae5c1b731446909f252fd494ae4, type: 3}
+  m_Script: {fileID: 11500000, guid: c8e7f16c0f3867540ab509dced5ef0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  target: {fileID: 4547255740505011702}
-  clientAuthority: 1
-  syncVelocity: 1
-  clearVelocity: 0
-  velocitySensitivity: 0.1
-  syncAngularVelocity: 1
-  clearAngularVelocity: 0
-  angularVelocitySensitivity: 0.1
+  color: {r: 0, g: 0, b: 0, a: 0}
+  penTip: {fileID: 8510100764814837530}
+  markerInteractable: {fileID: 2339240309828789502}
 --- !u!1 &2947235422417436867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,18 +1158,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7680819437007449570}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5820114862116566676 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4202688807806655350, guid: 370746423c1f7a4439f820902b96807a,
+--- !u!1 &8510100764814837530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2057638274824874744, guid: 370746423c1f7a4439f820902b96807a,
     type: 3}
   m_PrefabInstance: {fileID: 7680819437007449570}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49df0994f2debf45a55c7133e056ed1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7787136558427214023
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,11 +8,11 @@ using Mirror;
 public class WhiteboardEraser : NetworkBehaviour 
 {
 
-    public Whiteboard whiteboard;
+    private Whiteboard whiteboard;
     private bool lastTouch;
     private Quaternion lastAngle;
     private RaycastHit touch;
-    public Color color;
+    private Color color;
     private Material whiteboardMaterial;
     public GameObject eraserInteractable;
     private Rigidbody eraserInteractableRigidbody;

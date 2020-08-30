@@ -7,8 +7,7 @@ using Mirror;
 
 public class Marker : NetworkBehaviour 
 {
-
-    public Whiteboard whiteboard;
+    private Whiteboard whiteboard;
     private bool lastTouch;
     private Quaternion lastAngle;
     private RaycastHit touch;
@@ -27,16 +26,16 @@ public class Marker : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        float tipHeight = penTip.transform.localScale.y;
+        float tipHeight = this.penTip.transform.localScale.y;
 
-        Vector3 tip = penTip.transform.position;
+        Vector3 tip = this.penTip.transform.position;
 
-        Vector3 forward = penTip.transform.up;
+        Vector3 forward = this.penTip.transform.up;
 
         Debug.DrawRay(tip, forward * .03f, Color.red); 
 
         if (Physics.Raycast(tip, forward, out this.touch, 0.03f)){
-            print(this.touch.collider.tag);
+            // print(this.touch.collider.tag);
             
             if(!(this.touch.collider.tag == "Whiteboard"))
                 return;

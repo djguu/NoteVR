@@ -55,7 +55,13 @@ public class Whiteboard : NetworkBehaviour
         int x = (int) (posX * textureSize - (penSize / 2));
         int y = (int) (posY * textureSize - (penSize / 2));
 
-        if(touchingLast){
+        if(this.touchingLast){
+            // if(isServer){
+            //     RpcDraw(x, y, penSize, color, lastX, lastY);
+            // }
+            // else{
+            //     CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
+            // }
             CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
         }
 
@@ -63,14 +69,11 @@ public class Whiteboard : NetworkBehaviour
         this.lastY = (float)y;
 
         this.touchingLast = this.touching;
-        // print(color);
-        // RpcDraw();
        
     }
 
     [Command(ignoreAuthority=true)]
     void CmdDraw(int x, int y, int penSize, Color32[] color, float lastX, float lastY){
-        Draw(x, y, penSize, color, lastX, lastY);
         RpcDraw(x, y, penSize, color, lastX, lastY);
     }
 

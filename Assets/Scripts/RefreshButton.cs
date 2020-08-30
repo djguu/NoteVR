@@ -20,6 +20,7 @@ public class RefreshButton : NetworkBehaviour
         StartPos = Position.position;
     }
 
+    [Client]
     // Update is called once per frame
     void Update()
     {
@@ -36,6 +37,7 @@ public class RefreshButton : NetworkBehaviour
         }
     }
 
+    [Client]
     void OnCollisionExit(Collision collision)//check for when to unlock the button
     {
         // Debug.Log(collision.gameObject.tag);
@@ -43,8 +45,20 @@ public class RefreshButton : NetworkBehaviour
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
             ReverseDirection = true;
-            
-            this.whiteboard.ResetWhiteboard();
+            print("HERE");
+            CmdResetWhiteboard();
+            // this.whiteboard.ResetWhiteboard();
         }
+    }
+
+    [Command(ignoreAuthority=true)]
+    void CmdResetWhiteboard(){
+        RpcResetWhiteboard();
+    }
+
+    [ClientRpc]
+    void RpcResetWhiteboard(){
+        print("HERE");
+        this.whiteboard.ResetWhiteboard();
     }
 }
