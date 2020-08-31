@@ -61,4 +61,17 @@ public class WhiteboardEraser : NetworkBehaviour
             this.eraserInteractable.transform.rotation = lastAngle;
         }
     }
+    public void SetGravity(bool gravity){
+        CmdSetGravity(gravity);
+    }
+
+    [Command(ignoreAuthority=true)]
+    void CmdSetGravity(bool gravity){
+        RpcSetGravity(gravity);
+    }
+
+    [ClientRpc]
+    void RpcSetGravity(bool gravity){
+        this.eraserInteractable.GetComponent<Rigidbody>().useGravity = gravity;
+    }
 }

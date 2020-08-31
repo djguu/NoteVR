@@ -20,9 +20,9 @@ public class Marker : NetworkBehaviour
     void Start()
     {
         this.whiteboard = GameObject.Find("Whiteboard").GetComponent<Whiteboard> ();
-        this.whiteboard.SetObjectType("pen");
     }
 
+    [Client]
     // Update is called once per frame
     void Update()
     {
@@ -32,7 +32,7 @@ public class Marker : NetworkBehaviour
 
         Vector3 forward = this.penTip.transform.up;
 
-        Debug.DrawRay(tip, forward * .03f, Color.red); 
+        // Debug.DrawRay(tip, forward * .03f, Color.red); 
 
         if (Physics.Raycast(tip, forward, out this.touch, 0.03f)){
             // print(this.touch.collider.tag);
@@ -56,8 +56,23 @@ public class Marker : NetworkBehaviour
             this.lastTouch = false;
         }
 
-        if(lastTouch){
+        if(this.lastTouch){
             this.markerInteractable.transform.rotation = lastAngle;
         }
+
+    }
+
+    public void SetGravity(bool gravity){
+        CmdSetGravity(gravity);
+    }
+
+    [Command(ignoreAuthority=true)]
+    void CmdSetGravity(bool gravity){
+        RpcSetGravity(gravity);
+    }
+
+    [ClientRpc]
+    void RpcSetGravity(bool gravity){
+        this.markerInteractable.GetComponent<Rigidbody>().useGravity = gravity;
     }
 }

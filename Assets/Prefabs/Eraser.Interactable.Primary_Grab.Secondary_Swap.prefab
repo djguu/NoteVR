@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5948205001187604938}
   - component: {fileID: 1303069715409340786}
   - component: {fileID: 2937517348098320261}
-  - component: {fileID: 5779088115287864683}
   m_Layer: 0
   m_Name: Eraser.Interactable.Primary_Grab.Secondary_Swap
   m_TagString: Untagged
@@ -69,10 +68,54 @@ MonoBehaviour:
       m_Calls: []
   Grabbed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2314365461582957779}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2314365461582957779}
+        m_MethodName: SetGravity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Ungrabbed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2314365461582957779}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2314365461582957779}
+        m_MethodName: SetGravity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   LastUngrabbed:
     m_PersistentCalls:
       m_Calls: []
@@ -202,28 +245,6 @@ MonoBehaviour:
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
   target: {fileID: 3882151751222247819}
---- !u!114 &5779088115287864683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32734492732076919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83392ae5c1b731446909f252fd494ae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  target: {fileID: 2241091064738095743}
-  clientAuthority: 0
-  syncVelocity: 1
-  clearVelocity: 0
-  velocitySensitivity: 0.1
-  syncAngularVelocity: 1
-  clearAngularVelocity: 0
-  angularVelocitySensitivity: 0.1
 --- !u!1 &640710111266854730
 GameObject:
   m_ObjectHideFlags: 0
@@ -9759,6 +9780,11 @@ PrefabInstance:
       propertyPath: eraserInteractable
       value: 
       objectReference: {fileID: 32734492732076919}
+    - target: {fileID: 2972569911461548708, guid: c522bddacf6b242429c420f7c84b0fe7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3230971606861774663, guid: c522bddacf6b242429c420f7c84b0fe7,
         type: 3}
       propertyPath: m_Mesh
@@ -9837,3 +9863,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 675249354549485175}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2314365461582957779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2972569911461548708, guid: c522bddacf6b242429c420f7c84b0fe7,
+    type: 3}
+  m_PrefabInstance: {fileID: 675249354549485175}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d08422302437af4791c4068eecde250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
