@@ -15,7 +15,15 @@ public class SyncPos : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        CmdSyncPos(transform.localPosition, transform.localRotation);
+        if(!isServer){
+            CmdSyncPos(transform.localPosition, transform.localRotation);
+        }
+        
+        Debug.Log("hasAuthority" + hasAuthority);
+        // Debug.Log("isClient" + isClient);
+        // Debug.Log("isClientOnly" + isClientOnly);
+        // Debug.Log("isServer" + isServer);
+        // Debug.Log("isServerOnly" + isServerOnly);
     }
 
     [Command(ignoreAuthority=true)]

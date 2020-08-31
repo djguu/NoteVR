@@ -16,13 +16,11 @@ public class WhiteboardEraser : NetworkBehaviour
     private Material whiteboardMaterial;
     public GameObject eraserInteractable;
     private Rigidbody eraserInteractableRigidbody;
-    // public GameObject penTip;
 
-    // Start is called before the first frame update
     void Start()
     {
-        this.whiteboard = GameObject.Find("Whiteboard").GetComponent<Whiteboard> ();
-        this.color = Color.white;
+        whiteboard = GameObject.Find("Whiteboard").GetComponent<Whiteboard> ();
+        color = Color.white;
     }
 
     // Update is called once per frame
@@ -36,29 +34,28 @@ public class WhiteboardEraser : NetworkBehaviour
 
         // Debug.DrawRay(tip, dow  * .05f, Color.red); 
 
-        if (Physics.Raycast(tip, down, out this.touch, 0.02f)){
+        if (Physics.Raycast(tip, down, out touch, 0.02f)){
             
-            if(!(this.touch.collider.tag == "Whiteboard"))
+            if(!(touch.collider.tag == "Whiteboard"))
                 return;
 
-            this.whiteboard.SetObjectType("Eraser");
+            whiteboard.SetObjectType("Eraser");
 
-            this.whiteboard.SetColor(this.color);
-            this.whiteboard.SetTouchPosition(this.touch.textureCoord.x, this.touch.textureCoord.y);
-            this.whiteboard.ToggleTouch(true);
+            whiteboard.SetTouchPosition(touch.textureCoord.x, touch.textureCoord.y);
+            whiteboard.ToggleTouch(true);
 
-            if(!this.lastTouch){
-                this.lastTouch = true;
-                this.lastAngle = this.eraserInteractable.transform.rotation;
+            if(!lastTouch){
+                lastTouch = true;
+                lastAngle = eraserInteractable.transform.rotation;
             }
         }
         else{
-            this.whiteboard.ToggleTouch(false);
-            this.lastTouch = false;
+            whiteboard.ToggleTouch(false);
+            lastTouch = false;
         }
 
         if(lastTouch){
-            this.eraserInteractable.transform.rotation = lastAngle;
+            eraserInteractable.transform.rotation = lastAngle;
         }
     }
     public void SetGravity(bool gravity){
@@ -72,6 +69,6 @@ public class WhiteboardEraser : NetworkBehaviour
 
     [ClientRpc]
     void RpcSetGravity(bool gravity){
-        this.eraserInteractable.GetComponent<Rigidbody>().useGravity = gravity;
+        eraserInteractable.GetComponent<Rigidbody>().useGravity = gravity;
     }
 }

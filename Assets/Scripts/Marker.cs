@@ -19,47 +19,45 @@ public class Marker : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.whiteboard = GameObject.Find("Whiteboard").GetComponent<Whiteboard> ();
+        whiteboard = GameObject.Find("Whiteboard").GetComponent<Whiteboard> ();
     }
 
     [Client]
     // Update is called once per frame
     void Update()
     {
-        float tipHeight = this.penTip.transform.localScale.y;
+        float tipHeight = penTip.transform.localScale.y;
 
-        Vector3 tip = this.penTip.transform.position;
+        Vector3 tip = penTip.transform.position;
 
-        Vector3 forward = this.penTip.transform.up;
+        Vector3 forward = penTip.transform.up;
 
         // Debug.DrawRay(tip, forward * .03f, Color.red); 
 
-        if (Physics.Raycast(tip, forward, out this.touch, 0.03f)){
-            // print(this.touch.collider.tag);
+        if (Physics.Raycast(tip, forward, out touch, 0.03f)){
             
-            if(!(this.touch.collider.tag == "Whiteboard"))
+            if(!(touch.collider.tag == "Whiteboard"))
                 return;
 
-            this.whiteboard.SetObjectType("Marker");
+            whiteboard.SetObjectType("Marker");
 
-            this.whiteboard.SetColor(this.color);
-            this.whiteboard.SetTouchPosition(this.touch.textureCoord.x, this.touch.textureCoord.y);
-            this.whiteboard.ToggleTouch(true);
+            whiteboard.SetColor(color);
+            whiteboard.SetTouchPosition(touch.textureCoord.x, touch.textureCoord.y);
+            whiteboard.ToggleTouch(true);
 
-            if(!this.lastTouch){
-                this.lastTouch = true;
-                this.lastAngle = this.markerInteractable.transform.rotation;
+            if(!lastTouch){
+                lastTouch = true;
+                lastAngle = markerInteractable.transform.rotation;
             }
         }
         else{
-            this.whiteboard.ToggleTouch(false);
-            this.lastTouch = false;
+            whiteboard.ToggleTouch(false);
+            lastTouch = false;
         }
 
-        if(this.lastTouch){
-            this.markerInteractable.transform.rotation = lastAngle;
+        if(lastTouch){
+            markerInteractable.transform.rotation = lastAngle;
         }
-
     }
 
     public void SetGravity(bool gravity){
@@ -73,6 +71,6 @@ public class Marker : NetworkBehaviour
 
     [ClientRpc]
     void RpcSetGravity(bool gravity){
-        this.markerInteractable.GetComponent<Rigidbody>().useGravity = gravity;
+        markerInteractable.GetComponent<Rigidbody>().useGravity = gravity;
     }
 }

@@ -4375,7 +4375,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh258886
+  m_Name: pb_Mesh-38706
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11489,7 +11489,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh253560
+  m_Name: pb_Mesh-38830
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13573,7 +13573,8 @@ MonoBehaviour:
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 2339240309828789502, guid: ffa1238184be785468a1c1f8e047776b, type: 3}
 --- !u!114 &1399818216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15939,7 +15940,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh276298
+  m_Name: pb_Mesh-38602
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

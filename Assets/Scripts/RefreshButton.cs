@@ -12,16 +12,15 @@ public class RefreshButton : NetworkBehaviour
     private Vector3 StartPos;
 
     private bool ReverseDirection = false;
-    // Start is called before the first frame update
+
     void Start()
     {
-        this.whiteboard = GameObject.Find("Whiteboard").GetComponent<Whiteboard> ();
+        whiteboard = GameObject.Find("Whiteboard").GetComponent<Whiteboard> ();
         Position = GetComponent<Transform>();
         StartPos = Position.position;
     }
 
     [Client]
-    // Update is called once per frame
     void Update()
     {
         if(Mathf.Abs(Position.position.x - StartPos.x) > howFarStop && !ReverseDirection) {
@@ -40,7 +39,6 @@ public class RefreshButton : NetworkBehaviour
     [Client]
     void OnCollisionExit(Collision collision)//check for when to unlock the button
     {
-        // Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Hand") {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
@@ -56,6 +54,6 @@ public class RefreshButton : NetworkBehaviour
 
     [ClientRpc]
     void RpcResetWhiteboard(){
-        this.whiteboard.ResetWhiteboard();
+        whiteboard.ResetWhiteboard();
     }
 }

@@ -9,10 +9,12 @@ public class Whiteboard : NetworkBehaviour
 
     private int textureSize = 4096;
     private int penSize = 1;
+    private int eraserSize = 5;
 
     public int lerpMultiplier = 6;
     private Texture2D texture;
     private Color32[] color;
+    private Color32[] eraser;
 
     private bool touching, touchingLast;
     private float posX, posY;
@@ -22,53 +24,51 @@ public class Whiteboard : NetworkBehaviour
 
     private Color32[] textColor = new Color32[] {};
 
-    // Start is called before the first frame update
+
     void Awake()
     {
         Renderer renderer = GetComponent<Renderer>();
 
-        this.texture = new Texture2D(textureSize, textureSize, TextureFormat.RGBA32, false, true);
+        texture = new Texture2D(textureSize, textureSize, TextureFormat.RGBA32, false, true);
         
-        // textColor =  this.texture.GetPixels();
-        this.textColor = new Color32[textureSize * textureSize];
+        textColor = new Color32[textureSize * textureSize];
 
         for(var i = 0; i < textColor.Length; ++i)
         {
-            this.textColor[i] = Color.white;
+            textColor[i] = Color.white;
+        }
+
+        eraser = new Color32[eraserSize * eraserSize];
+
+        for(var i = 0; i < eraser.Length; ++i)
+        {
+            eraser[i] = Color.white;
         }
 
         ResetWhiteboard();
 
-        renderer.material.mainTexture = this.texture;
+        renderer.material.mainTexture = texture;
     }
 
     [Client]
     void Update()
     {
-        if(this.objectType == "Eraser"){
-            this.penSize = 5;
-        }
-        else{
-            this.penSize = 1;
-        }
-        // Debug.Log(posX + " " + posY);
         int x = (int) (posX * textureSize - (penSize / 2));
         int y = (int) (posY * textureSize - (penSize / 2));
 
-        if(this.touchingLast){
-            // if(isServer){
-            //     RpcDraw(x, y, penSize, color, lastX, lastY);
-            // }
-            // else{
-            //     CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
-            // }
-            CmdDraw(x, y, this.penSize, this.color, this.lastX, this.lastY);
+        if(touchingLast){
+            if(objectType == "Eraser"){
+                CmdDraw(x, y, eraserSize, eraser, lastX, lastY);
+            }
+            else{
+                CmdDraw(x, y, penSize, color, lastX, lastY);
+            }
         }
 
-        this.lastX = (float)x;
-        this.lastY = (float)y;
+        lastX = (float)x;
+        lastY = (float)y;
 
-        this.touchingLast = this.touching;
+        touchingLast = touching;
        
     }
 
@@ -84,7 +84,8 @@ public class Whiteboard : NetworkBehaviour
     }
 
     void Draw(int x, int y, int penSize, Color32[] color, float lastX, float lastY){
-        this.texture.SetPixels32(x, y, penSize, penSize, color);
+        Debug.Log(penSize);
+        texture.SetPixels32(x, y, penSize, penSize, color);
 
         float xDistance = Mathf.Abs(lastX-(float)x);
         float yDistance = Mathf.Abs(lastY-(float)y);
@@ -93,10 +94,10 @@ public class Whiteboard : NetworkBehaviour
             for(float t = 0.01f; t < 1.00f; t += 0.01f){
                 int lerpX = (int) Mathf.Lerp(lastX, (float)x, t);
                 int lerpY = (int) Mathf.Lerp(lastY, (float)y, t);
-                this.texture.SetPixels32(lerpX, lerpY, penSize, penSize, color);
+                texture.SetPixels32(lerpX, lerpY, penSize, penSize, color);
             }
         }
-        this.texture.Apply();
+        texture.Apply();
     }
 
     public void ToggleTouch(bool touching){
@@ -104,8 +105,8 @@ public class Whiteboard : NetworkBehaviour
     }
 
     public void SetTouchPosition(float x, float y){
-        this.posX = x;
-        this.posY = y;
+        posX = x;
+        posY = y;
     }
 
     public void SetColor(Color color){
@@ -113,11 +114,11 @@ public class Whiteboard : NetworkBehaviour
     }
 
     public void SetObjectType(string type){
-        this.objectType = type;
+        objectType = type;
     }
 
     public void ResetWhiteboard(){
-        this.texture.SetPixels32(this.textColor);
-        this.texture.Apply();
+        texture.SetPixels32(textColor);
+        texture.Apply();
     }
 }
