@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 1444451115566075680}
   - component: {fileID: 6309716271823371901}
   - component: {fileID: 5464728010601505495}
+  - component: {fileID: 5771111037710874791}
   m_Layer: 0
   m_Name: Marker.Interactable.Primary_Grab.Secondary_Swap
   m_TagString: Untagged
@@ -131,7 +132,7 @@ MonoBehaviour:
   Grabbed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1511881100153262654}
+      - m_Target: {fileID: 5771111037710874791}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -142,10 +143,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 5771111037710874791}
+        m_MethodName: SetGravity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Ungrabbed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1511881100153262654}
+      - m_Target: {fileID: 5771111037710874791}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -155,6 +167,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5771111037710874791}
+        m_MethodName: SetGravity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   LastUngrabbed:
     m_PersistentCalls:
@@ -285,6 +308,23 @@ MonoBehaviour:
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
   target: {fileID: 6208523602082804254}
+--- !u!114 &5771111037710874791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2339240309828789502}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e7f16c0f3867540ab509dced5ef0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  color: {r: 0, g: 0, b: 0, a: 0}
+  penTip: {fileID: 8510100764814837530}
+  markerInteractable: {fileID: 2339240309828789502}
 --- !u!1 &2947235422417436867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +1047,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5881750943294490887}
     m_Modifications:
+    - target: {fileID: -5691403952451056794, guid: 370746423c1f7a4439f820902b96807a,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 119222636966203700, guid: 370746423c1f7a4439f820902b96807a,
         type: 3}
       propertyPath: m_Mesh
@@ -1026,6 +1071,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202688807806655350, guid: 370746423c1f7a4439f820902b96807a,
+        type: 3}
+      propertyPath: markerInteractable
+      value: 
+      objectReference: {fileID: 2339240309828789502}
+    - target: {fileID: 4202688807806655350, guid: 370746423c1f7a4439f820902b96807a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4377177536257892348, guid: 370746423c1f7a4439f820902b96807a,
         type: 3}
@@ -1107,6 +1162,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9109804910575992796, guid: 370746423c1f7a4439f820902b96807a,
+        type: 3}
+      propertyPath: markerInteractable
+      value: 
+      objectReference: {fileID: 2339240309828789502}
     - target: {fileID: 9209637942229946887, guid: 370746423c1f7a4439f820902b96807a,
         type: 3}
       propertyPath: m_Mesh
@@ -1114,21 +1174,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 370746423c1f7a4439f820902b96807a, type: 3}
---- !u!114 &1511881100153262654 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9109804910575992796, guid: 370746423c1f7a4439f820902b96807a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7680819437007449570}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49df0994f2debf45a55c7133e056ed1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6208523602082804254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4377177536257892348, guid: 370746423c1f7a4439f820902b96807a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7680819437007449570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8510100764814837530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2057638274824874744, guid: 370746423c1f7a4439f820902b96807a,
     type: 3}
   m_PrefabInstance: {fileID: 7680819437007449570}
   m_PrefabAsset: {fileID: 0}

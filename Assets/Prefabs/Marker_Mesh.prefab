@@ -259,11 +259,11 @@ MeshRenderer:
   m_GameObject: {fileID: 2057638274824874744}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -322,7 +322,6 @@ GameObject:
   - component: {fileID: 4377177536257892348}
   - component: {fileID: 6935865275785648805}
   - component: {fileID: 7215458321071474759}
-  - component: {fileID: 9109804910575992796}
   m_Layer: 0
   m_Name: Marker_Mesh
   m_TagString: Untagged
@@ -374,20 +373,6 @@ CapsuleCollider:
   m_Height: 0.25148496
   m_Direction: 2
   m_Center: {x: -0.00022813492, y: -0.0088689905, z: 0.010159895}
---- !u!114 &9109804910575992796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2732872482652354661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49df0994f2debf45a55c7133e056ed1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whiteboard: {fileID: 0}
-  color: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &3262974488672662293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,11 +1537,11 @@ MeshRenderer:
   m_GameObject: {fileID: 3262974488672662293}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2348,11 +2333,11 @@ MeshRenderer:
   m_GameObject: {fileID: 8337789832728021685}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0

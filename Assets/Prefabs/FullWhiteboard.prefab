@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7371010959381950500}
   m_Layer: 0
-  m_Name: Whiteboard
+  m_Name: FullWhiteboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511898615682046382}
-  m_LocalRotation: {x: -0, y: 0.004081273, z: -0, w: 0.9999917}
+  m_LocalRotation: {x: 0, y: 0.004084081, z: 0, w: 0.99999166}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -31,7 +31,7 @@ Transform:
   - {fileID: 1654231492275297434}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.46800002, z: 0}
 --- !u!1 &6897511997602522030
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6897511997602522030}
   m_LocalRotation: {x: -0, y: 0.00021141002, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.037, y: 0.04, z: 0}
   m_LocalScale: {x: 30.95266, y: 16.303026, z: 0.4752428}
   m_Children: []
   m_Father: {fileID: 7371010959381950500}
@@ -302,8 +302,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 74bf7a9316c4ab14d8b448c3459f181f, type: 2}
-  - {fileID: 2100000, guid: 74bf7a9316c4ab14d8b448c3459f181f, type: 2}
+  - {fileID: 2100000, guid: 74f728b575cf92f48812225064a12423, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -360,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  lerpMultiplier: 15
 --- !u!114 &807198100310355105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,10 +392,10 @@ GameObject:
   - component: {fileID: 8242084383086715253}
   m_Layer: 0
   m_Name: Frame
-  m_TagString: Finish
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1654231492275297434
 Transform:
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   - {x: 0.9871975, y: 0.034115985, z: -4.5244865}
   - {x: 0.014534089, y: 0.034117166, z: -4.524422}
   - {x: 0.014476907, y: -0.0032751511, z: 0.009724688}
-  - {x: 0.98714256, y: -0.00327682, z: -0.49363548}
+  - {x: 0.9855211, y: -0.0032745611, z: -1.000485}
   - {x: 0.014533791, y: -0.0031756407, z: -1.3526738}
   - {x: 0.9873823, y: -0.0031761324, z: -1.352706}
   - {x: 0.014534089, y: 0.034117166, z: -4.524422}
@@ -1594,12 +1594,12 @@ MonoBehaviour:
   - {x: 1.0004205, y: 0.034018636}
   - {x: 4.5242605, y: -0.0000027643885}
   - {x: 4.5243897, y: 0.034017753}
-  - {x: 0.014533668, y: -3.786098}
+  - {x: 0.014533676, y: -3.786098}
   - {x: 0.9873823, y: -3.7861304}
   - {x: 0.9871425, y: -1.3525364}
-  - {x: 0.014546982, y: -1.3526009}
+  - {x: 0.014546989, y: -1.3526009}
   - {x: 0.9871424, y: -0.49070808}
-  - {x: 0.01454685, y: -0.49077263}
+  - {x: 0.014546857, y: -0.49077263}
   - {x: 1.0002593, y: 0.9659778}
   - {x: 1.0002593, y: 0.03402011}
   - {x: -0.24780108, y: 0.9659774}
@@ -1624,9 +1624,9 @@ MonoBehaviour:
   - {x: 0.00055461924, y: 1.4684427}
   - {x: 0.98749053, y: 1.4685463}
   - {x: 0.014827097, y: 1.468547}
-  - {x: 0.014476918, y: 0.00972478}
-  - {x: 0.98714256, y: -0.4936354}
-  - {x: 0.0145338, y: -1.3526736}
+  - {x: 0.014476925, y: 0.00972478}
+  - {x: 0.9855211, y: -1.0004848}
+  - {x: 0.014533808, y: -1.3526736}
   - {x: 0.9873823, y: -1.3527058}
   - {x: 4.524422, y: 0.03409367}
   - {x: -0.009756964, y: 0.034093965}
@@ -1806,7 +1806,7 @@ MonoBehaviour:
   - {x: -0.000000042290637, y: -2.9880033e-14, z: -1, w: -1}
   - {x: -0.000000046994153, y: 2.0751509e-20, z: -1, w: -1}
   - {x: 1, y: -0.00000050545026, z: -1.6207682e-12, w: -1}
-  - {x: 1, y: -0.00000050545015, z: 0, w: -1}
+  - {x: 1, y: -0.00000050545015, z: -2.067285e-20, w: -1}
   - {x: 1, y: 0.0000011122561, z: -4.5860043e-12, w: -1}
   - {x: 1, y: 0.0000011122561, z: 0.00000003063976, w: -1}
   - {x: 1, y: 0.0000011122561, z: 0.00000003063976, w: -1}
@@ -1835,10 +1835,10 @@ MonoBehaviour:
   - {x: 1, y: -0.00000022567625, z: -0.0000655929, w: -1}
   - {x: 1, y: -0.00000022567625, z: -0.0000655929, w: -1}
   - {x: 1, y: -0.0000005132063, z: -0.00006640412, w: -1}
-  - {x: 1, y: -0.00003951563, z: 0.000000045282523, w: -1}
-  - {x: 1, y: -0.000020012485, z: 0.000000022642409, w: -1}
-  - {x: 1, y: -0.00001351014, z: 0.000000015093859, w: -1}
-  - {x: 1, y: -0.00000050674686, z: -3.1534064e-13, w: -1}
+  - {x: 1, y: -0.000075382275, z: -0.000000031736676, w: -1}
+  - {x: 1, y: -0.000037948488, z: -0.000000015868338, w: -1}
+  - {x: 1, y: -0.000025467476, z: -0.000000010579972, w: -1}
+  - {x: 1, y: -0.0000005085362, z: -1.0805086e-12, w: -1}
   - {x: 0.0000000072896933, y: 0, z: -1, w: -1}
   - {x: -0.000000023394144, y: -7.008225e-18, z: -1, w: -1}
   - {x: -0.000000023394144, y: -7.008225e-18, z: -1, w: -1}
@@ -1926,18 +1926,17 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9168188597943881262}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9d3b1895a8fe7a0438aab4f9e4570499, type: 2}
-  - {fileID: 2100000, guid: 74bf7a9316c4ab14d8b448c3459f181f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

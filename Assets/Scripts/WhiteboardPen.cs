@@ -14,6 +14,7 @@ public class WhiteboardPen : NetworkBehaviour
     private RaycastHit touch;
     public Color color;
     // public GameObject penTip;
+    public GameObject markerInteractable;
 
     // Start is called before the first frame update
     void Start()
@@ -29,27 +30,17 @@ public class WhiteboardPen : NetworkBehaviour
 
         Vector3 tip = transform.Find("Tip").transform.position;
 
-        // Vector3 forward = (transform.right * -1) * .05f;
-        Vector3 forward = (transform.forward) * .03f;
-        // Vector3 backward = (-transform.forward) * .05f;
-        // Vector3 right = (transform.right) * .05f;
-        // Vector3 left = (-transform.right) * .05f;
-        Debug.DrawRay(tip, forward, Color.red); 
-        // Debug.DrawRay(tip, backward, Color.blue);
-        // Debug.DrawRay(tip, right, Color.green);
-        // Debug.DrawRay(tip, left, Color.yellow); 
+        Vector3 forward = transform.forward;
 
+        Debug.DrawRay(tip, forward * .03f, Color.red); 
 
-        if (Physics.Raycast(tip, this.transform.forward, out this.touch, 0.05f)){
-            // Debug.DrawRay(tip, transform.forward, Color.red); 
+        if (Physics.Raycast(tip, forward, out this.touch, 0.03f)){
+            // print(this.touch.collider.tag);
             
             if(!(this.touch.collider.tag == "Whiteboard"))
                 return;
 
-            // print(touch.distance);
-            Debug.Log(this.touch.collider.tag);
-
-            this.whiteboard = this.touch.collider.GetComponent <Whiteboard> ();
+            this.whiteboard.SetObjectType("Marker");
 
             this.whiteboard.SetColor(this.color);
             this.whiteboard.SetTouchPosition(this.touch.textureCoord.x, this.touch.textureCoord.y);
@@ -57,16 +48,16 @@ public class WhiteboardPen : NetworkBehaviour
 
             if(!this.lastTouch){
                 this.lastTouch = true;
-                this.lastAngle = this.transform.rotation;
+                this.lastAngle = this.markerInteractable.transform.rotation;
             }
         }
         else{
-            // this.whiteboard.ToggleTouch(false);
+            this.whiteboard.ToggleTouch(false);
             this.lastTouch = false;
         }
 
-        // if(lastTouch){
-        //     transform.rotation = lastAngle;
-        // }
+        if(lastTouch){
+            this.markerInteractable.transform.rotation = lastAngle;
+        }
     }
 }
