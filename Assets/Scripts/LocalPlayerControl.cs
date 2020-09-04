@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using TMPro;
 
 public class LocalPlayerControl : NetworkBehaviour
 {
@@ -11,21 +12,41 @@ public class LocalPlayerControl : NetworkBehaviour
     public Vector3 pos;
     public Transform leftHand;
     public Transform rightHand;
-    // public Animator anim;
 
+    // private FindPlayerNumber findNumber;
+
+    // [SyncVar]
+    // public int playerNumber;
+    
+    // public GameObject playerNameObject;
+
+    // [SyncVar]
+    // public string playerName;
+    // private TextMeshPro playerNameBox;
+
+    [SerializeField]
     public float speed = 3;
 
-    // Start is called before the first frame update
+    
+    // public override void OnStartClient()
     void Start()
     {
-        // anim = GetComponentInChildren<Animator>();
         pos = transform.position;
+        // // playerNameBox = playerNameObject.GetComponent<TextMeshPro>();
+        // // if(hasAuthority){
+        // findNumber = GameObject.Find("NumberOfPlayers").GetComponent<FindPlayerNumber>();
+        // findNumber.numberOfPlayers += 1;
+        // playerNumber = findNumber.numberOfPlayers;
+        // playerName = "User " + (playerNumber).ToString();
+
+        // // }
+        // SetPlayerName(playerName);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {   
-        //Resolve que a camera nao salte  para o novo jogador
+        //Allows only the main camera and the player camera to be on scene
         if(!isLocalPlayer){
             Destroy(ovrCameraRig);
         }
@@ -38,7 +59,6 @@ public class LocalPlayerControl : NetworkBehaviour
                 rightEye.tag = "MainCamera";
                 rightEye.enabled = true;
             }
-            // print(ovrCameraRig.centerEyeAnchor.position);
 
             Vector3 euler = transform.rotation.eulerAngles;
             
@@ -46,32 +66,15 @@ public class LocalPlayerControl : NetworkBehaviour
 
             Vector2 secondaryAxys = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
 
-            // if (primaryAxis.x != 0 || primaryAxis.y != 0){
-            //     anim.SetBool("Idle", false);
-            //     GetComponent<LocalAnimationControl>().CmdUpdateAnim("run");
-            // }
-            // else{
-            //     anim.SetBool("Idle", true);
-            //     GetComponent<LocalAnimationControl>().CmdUpdateAnim("idle");
-            // }
-            //posicao das maos
+            //handles the hands position
             leftHand.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
             rightHand.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
-            // leftHand.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
-            // rightHand.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
 
             leftHand.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
             rightHand.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
-            // leftHand.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
-            // rightHand.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
-            // leftHand.localRotation = InputTracking.GetLocalRotation(Node.LeftHand);
-            // rightHand.localRotation = InputTracking.GetLocalRotation(Node.RightHand);
-            // leftHand.localPosition = InputTracking.GetLocalPosition(Node.LeftHand);
-            // rightHand.localPosition = InputTracking.GetLocalPosition(Node.RightHand);
 
-            //posiçao e rotaçao do jogador
-            
-            // print(primaryAxis.y);
+
+            //handles player position and rotation
             if(primaryAxis.y > 0f){
                 pos += (primaryAxis.y * transform.forward * Time.deltaTime * speed);
             }
@@ -95,4 +98,20 @@ public class LocalPlayerControl : NetworkBehaviour
             transform.localRotation = Quaternion.Euler(euler);
         }
     }
+
+    // [Client]
+    // void SetPlayerName(string name){
+    //     CmdSendNameToServer(playerName);
+    // }
+
+    // [Command]
+    // void CmdSendNameToServer(string name){
+    //     RpcSetPlayerName(name);
+    // }
+
+    // [ClientRpc]
+    // void RpcSetPlayerName(string name){
+    //     playerNameBox = transform.Find("name").gameObject.GetComponent<TextMeshPro>();
+    //     playerNameBox.text = name;
+    // }
 }
