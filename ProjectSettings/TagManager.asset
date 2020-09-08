@@ -8,6 +8,8 @@ TagManager:
   - ExcludeTeleport
   - Whiteboard
   - RedPen
+  - Hand
+  - LocalPlayer
   layers:
   - Default
   - TransparentFX
