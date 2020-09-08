@@ -10,21 +10,41 @@ public class Whiteboard : NetworkBehaviour
     private int textureSize = 4096;
     private int penSize = 1;
     private int eraserSize = 5;
+<<<<<<< HEAD:Assets/NoteVR/Scripts/Whiteboard.cs
     public Texture2D texture;
     private Color32[] color;
     private Color32[] eraser;
     private Color32[] textColor = new Color32[] {};
     
+=======
+
+    public int lerpMultiplier = 6;
+    private Texture2D texture;
+    private Color32[] color;
+    private Color32[] eraser;
+
+>>>>>>> PlayerModifications:Assets/Scripts/Whiteboard.cs
     private bool touching, touchingLast;
     private float posX, posY;
     private float lastX, lastY;
 
     private string objectType;
 
+<<<<<<< HEAD:Assets/NoteVR/Scripts/Whiteboard.cs
+=======
+    private Color32[] textColor = new Color32[] {};
+
+
+>>>>>>> PlayerModifications:Assets/Scripts/Whiteboard.cs
     void Awake()
     {
         Renderer renderer = GetComponent<Renderer>();
 
+<<<<<<< HEAD:Assets/NoteVR/Scripts/Whiteboard.cs
+=======
+        texture = new Texture2D(textureSize, textureSize, TextureFormat.RGBA32, false, true);
+        
+>>>>>>> PlayerModifications:Assets/Scripts/Whiteboard.cs
         textColor = new Color32[textureSize * textureSize];
 
         for(var i = 0; i < textColor.Length; ++i)
@@ -39,6 +59,7 @@ public class Whiteboard : NetworkBehaviour
             eraser[i] = Color.white;
         }
 
+<<<<<<< HEAD:Assets/NoteVR/Scripts/Whiteboard.cs
         texture = new Texture2D(textureSize, textureSize, TextureFormat.RGBA32, false, true);
 
         if(File.Exists(Application.persistentDataPath + "/" + "Whiteboard.png")){
@@ -48,6 +69,10 @@ public class Whiteboard : NetworkBehaviour
             ResetWhiteboard();
             
         }
+=======
+        ResetWhiteboard();
+
+>>>>>>> PlayerModifications:Assets/Scripts/Whiteboard.cs
         renderer.material.mainTexture = texture;
     }
 
@@ -85,12 +110,20 @@ public class Whiteboard : NetworkBehaviour
     }
 
     void Draw(int x, int y, int penSize, Color32[] color, float lastX, float lastY){
+<<<<<<< HEAD:Assets/NoteVR/Scripts/Whiteboard.cs
+=======
+        Debug.Log(penSize);
+>>>>>>> PlayerModifications:Assets/Scripts/Whiteboard.cs
         texture.SetPixels32(x, y, penSize, penSize, color);
 
         float xDistance = Mathf.Abs(lastX-(float)x);
         float yDistance = Mathf.Abs(lastY-(float)y);
 
+<<<<<<< HEAD:Assets/NoteVR/Scripts/Whiteboard.cs
         if(xDistance < (penSize * 5) && yDistance < (penSize * 5) ){
+=======
+        if(xDistance < (penSize * 20) && yDistance < (penSize * 20) ){
+>>>>>>> PlayerModifications:Assets/Scripts/Whiteboard.cs
             for(float t = 0.01f; t < 1.00f; t += 0.01f){
                 int lerpX = (int) Mathf.Lerp(lastX, (float)x, t);
                 int lerpY = (int) Mathf.Lerp(lastY, (float)y, t);
@@ -110,11 +143,15 @@ public class Whiteboard : NetworkBehaviour
     }
 
     public void SetColor(Color color){
+<<<<<<< HEAD:Assets/NoteVR/Scripts/Whiteboard.cs
         this.color = new Color32[penSize * penSize];
         for(var i = 0; i < this.color.Length; ++i)
         {
             this.color[i] = color;
         }
+=======
+        this.color = Enumerable.Repeat<Color32>(color, penSize * penSize).ToArray<Color32>();
+>>>>>>> PlayerModifications:Assets/Scripts/Whiteboard.cs
     }
 
     public void SetObjectType(string type){

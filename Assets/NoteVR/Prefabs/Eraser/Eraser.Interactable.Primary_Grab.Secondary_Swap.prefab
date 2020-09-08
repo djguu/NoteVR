@@ -69,7 +69,11 @@ MonoBehaviour:
   Grabbed:
     m_PersistentCalls:
       m_Calls:
+<<<<<<< HEAD:Assets/NoteVR/Prefabs/Eraser/Eraser.Interactable.Primary_Grab.Secondary_Swap.prefab
       - m_Target: {fileID: 3118988482795559236}
+=======
+      - m_Target: {fileID: 2314365461582957779}
+>>>>>>> PlayerModifications:Assets/Prefabs/Eraser.Interactable.Primary_Grab.Secondary_Swap.prefab
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -80,8 +84,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+<<<<<<< HEAD:Assets/NoteVR/Prefabs/Eraser/Eraser.Interactable.Primary_Grab.Secondary_Swap.prefab
       - m_Target: {fileID: 2241091064738095743}
         m_MethodName: set_useGravity
+=======
+      - m_Target: {fileID: 2314365461582957779}
+        m_MethodName: SetGravity
+>>>>>>> PlayerModifications:Assets/Prefabs/Eraser.Interactable.Primary_Grab.Secondary_Swap.prefab
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -94,7 +103,11 @@ MonoBehaviour:
   Ungrabbed:
     m_PersistentCalls:
       m_Calls:
+<<<<<<< HEAD:Assets/NoteVR/Prefabs/Eraser/Eraser.Interactable.Primary_Grab.Secondary_Swap.prefab
       - m_Target: {fileID: 3118988482795559236}
+=======
+      - m_Target: {fileID: 2314365461582957779}
+>>>>>>> PlayerModifications:Assets/Prefabs/Eraser.Interactable.Primary_Grab.Secondary_Swap.prefab
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
@@ -105,8 +118,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+<<<<<<< HEAD:Assets/NoteVR/Prefabs/Eraser/Eraser.Interactable.Primary_Grab.Secondary_Swap.prefab
       - m_Target: {fileID: 2241091064738095743}
         m_MethodName: set_useGravity
+=======
+      - m_Target: {fileID: 2314365461582957779}
+        m_MethodName: SetGravity
+>>>>>>> PlayerModifications:Assets/Prefabs/Eraser.Interactable.Primary_Grab.Secondary_Swap.prefab
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9874,3 +9892,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 675249354549485175}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2314365461582957779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2972569911461548708, guid: c522bddacf6b242429c420f7c84b0fe7,
+    type: 3}
+  m_PrefabInstance: {fileID: 675249354549485175}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d08422302437af4791c4068eecde250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
